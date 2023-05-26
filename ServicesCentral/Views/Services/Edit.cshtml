@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Create Services";
+}
+@model Services;
+
+    <h3 class="text-center">Update Services genre</h3>
+
+    <form method="post" asp-controller="Services" asp-action="Edit">
+        <input type="hidden" class="input" asp-for="Id">
+        <!-- บอกว่าเก็บข้อมูลที่ไหน -->
+        <div class="form-group">
+            <label asp-for="GenreName" class="my-2"></label> <!-- asp-for เอาข้อมูลที่อยู่ในformไปผูกกับตัวโมเดล;label เป็นการแสดงข้อความในแบบฟอร์ม-->
+            <input type="text" asp-for="GenreName" class="form-control" /> <!-- ทำให้ช่องใส่ข้อมูลมันดูสวย -->
+            <span asp-validation-for="GenreName" class="text-danger"></span> <!-- span รับหน้าที่ในการแจ้งข้อความตอบกลับ(ภาษาอังกฤษ)ในกรณีไม่ได้ป้อนชื่อ(ก็ตามที่กำหนดใน model) -->
+        </div>
+
+        @if (TempData["msg"] != null)
+        {
+            <div class="text-success mb-1">
+                @TempData["msg"]
+            </div>
+        }
+
+        <button type="submit" class="btn btn-primary">Update</button> <!-- my-2 is margin y -->
+        <a class="btn btn-secondary" asp-area="" asp-controller="Services" asp-action="GenreList">All records</a>
+    </form>
+

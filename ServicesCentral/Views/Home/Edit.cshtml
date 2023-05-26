@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Reserve";
+}
+@model ServicesCentral.Models.Domain.Reservation;
+
+<h3 class="text-center">Update Reserve</h3>
+
+@if (Model.ShopImage != null)
+{
+    <div class="market-detail w-80 m-auto">
+        <div class="img-container">
+            <img alt="image" src="/Uploads/@Model.ShopImage">
+        </div>
+
+        <div class="detail-container">
+            <h2>Shop : @Model.ShopName</h2>
+            <h2>Services : @Model.ServiceName</h2>
+            <h2>Price : @Model.Price</h2>
+            <h2>Description : @Model.Description</h2>
+        </div>
+    </div>
+}
+
+<form method="post" asp-controller="Home" asp-action="Edit">
+    <input type="hidden" class="input" asp-for="MarketId">
+    <div class="form-group">
+        <label asp-for="BookerName" class="my-2"></label>
+        <input type="text" asp-for="BookerName" class="form-control" />
+        <span asp-validation-for="BookerName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ReserveDate" class="my-2"></label>
+        <input type="date" asp-for="ReserveDate" class="form-control" />
+        <span asp-validation-for="ReserveDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber" class="my-2"></label>
+        <input type="text" asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email" class="my-2"></label>
+        <input type="text" asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Note" class="my-2"></label>
+        <input type="text" asp-for="Note" class="form-control" />
+    </div>
+
+    @if (TempData["msg"] != null)
+    {
+        <div class="text-success mb-1">
+            @TempData["msg"]
+        </div>
+    }
+    <div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a class="btn btn-secondary" href="/Home/ReserveList">All reservation</a>
+    </div>
+</form>

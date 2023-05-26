@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Create Market";
+}
+@model Market;
+
+    <h3 class="text-center">Add Market</h3>
+
+    <form method="post" asp-controller="Market" asp-action="Add" enctype="multipart/form-data">
+        <!-- enctype for saving image -->
+        <!-- บอกว่าเก็บข้อมูลที่ไหน -->
+        <div class="form-group my-4">
+            <label asp-for="ShopName" class="my-2"></label> <!-- asp-for เอาข้อมูลที่อยู่ในformไปผูกกับตัวโมเดล;label เป็นการแสดงข้อความในแบบฟอร์ม-->
+            <input type="text" asp-for="ShopName" class="form-control" /> <!-- ทำให้ช่องใส่ข้อมูลมันดูสวย -->
+            <span asp-validation-for="ShopName" class="text-danger"></span> <!-- span รับหน้าที่ในการแจ้งข้อความตอบกลับ(ภาษาอังกฤษ)ในกรณีไม่ได้ป้อนชื่อ(ก็ตามที่กำหนดใน model) -->
+        </div>
+
+        <div class="form-group my-2">
+            <label asp-for="ImageFile" class="my-3">Shop Image</label><br />
+            <input type="file" asp-for="ImageFile"/>
+            <span asp-validation-for="ImageFile" class="text-danger"></span>
+        </div>
+
+        <div class="form-group my-4">
+            <label asp-for="Services"></label>
+            <select asp-items="Model.ServicesList" asp-for="Services" class="form-control" multiple>
+                <option value="">--select--</option>
+            </select>
+            <span asp-validation-for="Services" class="text-danger"></span>
+        </div>
+
+        <div class="form-group my-3">
+            <label asp-for="Price"></label>
+            <input type="number" asp-for="Price" class="form-control" /> <!-- ทำให้ช่องใส่ข้อมูลมันดูสวย -->
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="form-group my-3">
+            <label asp-for="Description"></label>
+            <input type="text" asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        @if (TempData["msg"] != null)
+        {
+            <div class="text-success mb-1">
+                @TempData["msg"]
+            </div>
+        }
+
+        <button type="submit" class="btn btn-primary">Add</button> <!-- my-2 is margin y -->
+        <a class="btn btn-secondary" href="/Market/MarketList">All records</a>
+    </form>

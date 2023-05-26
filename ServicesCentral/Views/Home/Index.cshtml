@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model ServicesCentral.Models.MarketListVm
+<!--
+<div class="text-center">
+    <h1 class="display-1">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+-->
+<section class="text-center">
+    <h1 class="text-header">SERVICE CENTRAL</h1>
+    <h2>SLOGAN TEXT</h2>
+    <div>
+        <button type="button" class="btn btn-info" onclick="javascript:location.href='/Home/Login'">Sign up</button>
+        <button type="button" class="btn btn-secondary" onclick="javascript:location.href='/Home/Login'">Login</button>
+    </div>
+    <img src="~/img/logo_sc.png" alt="logo" class="logo-header" )>
+</section>
+
+
+<hr />
+
+
+<h2 style="margin:30px 0 10px 30px;">ALL SERVICE</h2>
+
+
+<section class="markets">
+    @foreach (var genre in Model.ServicestList)
+    {
+        <div class="market-card " style="height: 13vh; border-radius: 0.25rem;" onclick="window.location.href='/Home/Services?currentPage=@Model.CurrentPage&term=@genre.GenreName'">
+            <div class="market-info">
+                <hr class="text-white" style="margin-top:0px;" />
+                <h2 class="text-center text-white">@genre.GenreName</h2>
+                <hr class="text-white" />
+            </div>
+        </div>
+    }
+</section>
+
+<div class="pagination">
+    <i class="fa fa-angle-double-left m-2" style="font-size: 20px; color: lightgray ;text-align: center;" aria-hidden="true"></i>
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        if (i == Model.CurrentPage)
+        {
+            <a href="/Home/Index?currentPage=@i&term=@Model.Term&shop=@Model.Shop" class="active">@i</a>
+        }
+        else
+        {
+            <a href="/Home/Index?currentPage=@i&term=@Model.Term&shop=@Model.Shop">@i</a>
+
+        }
+    }
+    <i class="fa fa-angle-double-right m-2" style="font-size: 20px; color: lightgray ;text-align: center;" aria-hidden="true"></i>
+</div>

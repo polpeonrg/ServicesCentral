@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Services";
+}
+@model ServicesCentral.Models.MarketListVm
+
+
+<h3 class=" text-center">Market</h3>
+
+<section class="markets">
+    @foreach (var genre in Model.ServicestList)
+    {
+        if (genre.GenreName.ToLower() == Model.Term)
+        {
+            <div class="market-card " style="background-color: #1D212B; height: 13vh; border-radius: 0.25rem;" onclick="window.location.href='/Home/Services?currentPage=@Model.CurrentPage&term=@genre.GenreName&shop=@Model.Shop'">
+                <div class="market-info">
+                    <hr class="text-white" style="margin-top:0px;" />
+                    <h2 class="text-center text-white">@genre.GenreName</h2>
+                    <hr class="text-white" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="market-card " style="height: 13vh; border-radius: 0.25rem;" onclick="window.location.href='/Home/Services?currentPage=@Model.CurrentPage&term=@genre.GenreName&shop=@Model.Shop'">
+                <div class="market-info">
+                    <hr class="text-white" style="margin-top:0px;" />
+                    <h2 class="text-center text-white">@genre.GenreName</h2>
+                    <hr class="text-white" />
+                </div>
+            </div>
+         }
+
+    }
+</section>
+
+<div class="pagination">
+    <i class="fa fa-angle-double-left m-2" style="font-size: 20px; color: lightgray ;text-align: center;" aria-hidden="true"></i>
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        if (i == Model.CurrentPage)
+        {
+            <a href="/Home/Services?currentPage=@i&term=@Model.Term&shop=@Model.Shop" class="active">@i</a>
+        }
+        else
+        {
+            <a href="/Home/Services?currentPage=@i&term=@Model.Term&shop=@Model.Shop">@i</a>
+
+        }
+    }
+    <i class="fa fa-angle-double-right m-2" style="font-size: 20px; color: lightgray ;text-align: center;" aria-hidden="true"></i>
+</div>
+
+<section class="search-bar">
+    <form method="get" asp-action="Services">
+        <input type="text" name="shop" placeholder= @Model.Shop "search shop name here": @Model.Shop>
+        <button type="submit"><i class="fa fa-search"></i></button>
+        <a class="btn btn-default" href="/Home/Services">All</a> 
+    </form>
+</section>
+
+<section class="markets">
+    @foreach (var market in Model.MarketList)
+    {
+        <div class="market-card" onclick="window.location.href='/Home/Reserve?marketId=@market.Id'">
+            <div class="market-image">
+                <img src="/Uploads/@market.ShopImage" />
+            </div>
+            <div class="market-info">
+                <hr class="text-white" />
+                <h4 class="text-center">@market.ShopName</h4>
+                <hr class="text-white" />
+                <h4>Services : @market.ServiceName</h4>
+                <h4>Price : @market.Price</h4>
+                <h4>Description : @market.Description</h4>
+            </div>
+            <i class="fa fa-cart-plus my-2" style="font-size: 20px; color: white ;text-align: right;" aria-hidden="true"></i>
+        </div>
+    }
+</section>
+

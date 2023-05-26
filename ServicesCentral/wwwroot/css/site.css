@@ -1,0 +1,359 @@
+﻿/** Online google fonts **/
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: #4F576B;
+    scroll-behavior: smooth;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+footer {
+    background-color: #4F576B;
+}
+
+nav {
+    background-color: #4F576B;
+    padding: 0 20px;
+    align-items: center;
+    height: 7vh;
+    box-shadow: 0 2px 2px;
+}
+
+.nav-link {
+    list-style: none;
+    display: flex;
+    margin: 0 15px;
+    color: #fff;
+    font-weight: 300;
+}
+
+nav .logo {
+    position: relative;
+    top: -5px;
+    width: 28px;
+    margin-right: 20px;
+}
+
+.nav-link ul li a:hover {
+    background-color: #1D212B;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    font-weight: 100;
+    font-size: 60px;
+}
+
+h2 {
+    font-weight: 800;
+    font-size: 20px;
+}
+
+h3 {
+    font-weight: 300;
+    font-size: 40px;
+}
+
+h4 {
+    font-weight: 400;
+    font-size: 14px;
+    color: white;
+}
+
+.text-header {
+    margin-top: 10vh;
+}
+
+.logo-header {
+    margin-top: 5vh;
+    width: 50px;
+}
+
+.btn {
+    border-radius: 8px;
+    padding: 6px 18px;
+    margin: 10px 20px 10px 0;
+}
+
+.btn-table {
+    border-radius: 8px;
+    padding: 6px 18px;
+    margin: 0;
+}
+
+.btn-default {
+    padding: 0.7rem;
+    border: 1px solid #4F576B;
+    border-radius: 0.25rem;
+}
+
+.btn:hover {
+    background-color: #1D212B;
+    border: 1px solid #1D212B;
+    color: #fff;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+
+.section-service {
+    margin: 0;
+    padding: 0;
+    background-color: #4F576B;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 0 2%;
+}
+
+    .search-bar input[type="text"] {
+        padding: 0.7rem;
+        border: 1px solid lightgray;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+        width: 25%;
+    }
+
+    .search-bar button {
+        border-radius: 0.25rem;
+        font-size: 1rem;
+        padding: 0.7rem 0.9rem;
+        border: none;
+        background-color: rgb(192, 192, 192);
+        color: black;
+        cursor: pointer;
+    }
+
+.markets {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    /* background-color: red; */
+}
+
+.market-card {
+    padding: 2%;
+    margin: 2%;
+    /*flex-basis: 16%;*/
+    width: 16%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    cursor: pointer;
+    background-color: #4F576B;
+}
+
+    .market-card:hover {
+        cursor: pointer;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 18px 30px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+        background-color: #1D212B;
+        transition: background-color 0.5s;
+    }
+
+    .market-card:active {
+        background-color: #1D212B;
+    }
+
+.market-image img {
+    width: 100%;
+    height: 12vh; 
+}
+
+.market-detail {
+    display: flex;
+    font-family: var(--font-mukta);
+    max-height: 50%;
+}
+
+.img-container {
+    max-width: 40%;
+}
+
+    .img-container img {
+        max-width: 300px;
+        width:100%;
+        height: 200px;
+        border-radius: 0.25rem;
+    }
+
+.detail-container {
+    padding: 0 1.2rem;
+}
+
+/* Pagination links */
+.pagination {
+    display: flex;
+    justify-content: right;
+}
+
+    .pagination a {
+        color: black;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
+
+        /* Style the active/current link */
+        .pagination a.active {
+            background-color: rgb(169, 30, 255);
+            color: white;
+        }
+
+        /* Add a grey background color on mouse-over */
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+
+/* Contact us
+   ========================================================================== */
+
+.contact-contrainer {
+    max-width: 1800px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1.5rem;
+}
+
+.contact-us-aside-left {
+    width: 60%;
+    float: left;
+    /* padding-left: 11%; */
+}
+
+    .contact-us-aside-left .contact-us {
+        /*background-color: #555; */
+        width: 600px;
+        margin: 10% auto 0 10%;
+        /* border-bottom: 1px solid #C0CEB2; */
+    }
+
+        .contact-us-aside-left .contact-us h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact-us-aside-left .contact-us .icon-small {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 120%;
+            color: #4F576B;
+            text-align: center;
+            margin-right: 15px;
+            line-height: 120%;
+            width: 25px;
+        }
+
+        .contact-us-aside-left .contact-us div {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .contact-us-aside-left .contact-us:after {
+            display: block;
+            content: "";
+            background-color: #4F576B;
+            height: 2px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .contact-us-aside-left .contact-us a:link,
+        .contact-us-aside-left .contact-us a:visited {
+            color: #4F576B;
+            text-decoration: none;
+        }
+
+        .contact-us-aside-left .contact-us a:hover,
+        .contact-us-aside-left .contact-us a:active {
+            color: #ccc4b0;
+            transition: 0.2s, color 0.2s;
+        }
+
+/* Subscribe form
+   ========================================================================== */
+
+.subscribe {
+    width: 600px;
+    margin: 50px auto 100px 10%;
+}
+
+    .subscribe h2 {
+        margin-bottom: 20px;
+    }
+
+    .subscribe .row {
+        width: 600px;
+        margin-bottom: 10px;
+    }
+
+    .subscribe .contact-form {
+        width: 60%;
+    }
+
+    .subscribe input[type="text"],
+    .subscribe input[type="email"],
+    .subscribe textarea {
+        width: 100%;
+        padding: 5px;
+        border-radius: 4px;
+        border: 1px solid #253628;
+    }
+
+    .subscribe input[type="submit"] {
+        /* margin-left: 100%; */
+        width: 100%;
+        text-align: center;
+        display: inline-block;
+        height: 40px;
+        font-weight: 400;
+        text-decoration: none;
+        border-radius: 10px;
+        border: 2px solid #253628;
+        transition: background-color 0.2s, border 0.2s, color 0.2s;
+        background-color: #fff;
+        color: #253628;
+    }
+
+        .subscribe input[type="submit"]:hover,
+        .subscribe input[type="submit"]:active {
+            background-color: #253628;
+            border: 1px solid #253628;
+            color: #fff;
+        }
+
+.map iframe{
+    width: 100%;
+    height: 100%;
+}

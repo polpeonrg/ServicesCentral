@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "All Market";
+}
+@model ServicesCentral.Models.MarketListVm
+
+@if (Model.MarketList.Count() > 0)
+{
+    <h3 class="text-center">All Market</h3>
+    <!-- ถ้ามีจำนวน row -->
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-white">Shop</th>
+                <th class="text-white">Image</th>
+                <th class="text-white">Service</th>
+                <th class="text-white">Price</th>
+                <th class="text-white">Description</th>
+                <th class="text-white">Edit</th>
+                <th class="text-white">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var shop in Model.MarketList)
+            {
+                <tr>
+                    <td>@shop.ShopName</td>
+                    <td><img style="height:80px;width:100px" src="/Uploads/@shop.ShopImage" /></td>
+                    <td>@shop.ServiceName</td>
+                    <td>@shop.Price</td>
+                    <td>@shop.Description</td>
+                    <td>
+                        <a class="btn btn-table btn-warning"
+                           asp-controller="Market"
+                           asp-action="Edit"
+                           asp-route-id="@shop.Id">Edit</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-table btn-danger"
+                           asp-controller="Market"
+                           asp-action="Delete"
+                           asp-route-id="@shop.Id"
+                           onclick="return confirm('Do you want to delete @shop.ShopName ?')">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-secondary">Not have market</div>
+}
+
+<a class="btn btn-secondary" asp-area="" asp-controller="Market" asp-action="Add">Back</a>

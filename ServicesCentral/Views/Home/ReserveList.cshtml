@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Reserve List";
+}
+@model ServicesCentral.Models.ReserveListVm
+
+<h3 class="text-center">All Reservation</h3>
+
+@if (TempData["msg"] != null)
+{
+    <div class="text-success mb-1">
+        @TempData["msg"]
+    </div>
+}
+
+@if (Model.ReservationList.Count() > 0)
+{
+    <!-- ถ้ามีจำนวน row -->
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-white">ShopName</th>
+                <th class="text-white">ServiceName</th>
+                <th class="text-white">Price</th>
+                <th class="text-white">Name</th>
+                <th class="text-white">PhoneNumber</th>
+                <th class="text-white">Reserved Date</th>
+                <th class="text-white">Edit</th>
+                <th class="text-white">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var data in Model.ReservationList)
+            {
+                <tr>
+                    <td>@data.ShopName</td>
+                    <td>@data.ServiceName</td>
+                    <td>@data.Price</td>
+                    <td>@data.BookerName</td>
+                    <td>@data.PhoneNumber</td>
+                    <td>@data.ReserveDateTH</td>
+                    <td>
+                        <a class="btn btn-table btn-warning"
+                           asp-controller="Home"
+                           asp-action="Edit"
+                           asp-route-id="@data.Id">Edit</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-table btn-danger"
+                           asp-controller="Home"
+                           asp-action="Delete"
+                           asp-route-id="@data.Id"
+                           onclick="return confirm('Do you want to delete @data.ShopName ?')">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+else
+{
+    <div class="alert alert-secondary">Not have reservation</div>
+}
+
+<a class="btn btn-secondary" asp-area="" asp-controller="Home" asp-action="Services">Back</a>
