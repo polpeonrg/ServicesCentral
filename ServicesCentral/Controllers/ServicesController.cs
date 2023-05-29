@@ -6,11 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using ServicesCentral.Models;
 using ServicesCentral.Data;
 using ServicesCentral.Repositories.Abstract;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.AspNetCore.Authorization;
+using System.Diagnostics;
 
 namespace ServicesCentral.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ServicesController : Controller
     {
         // GET: /<controller>/
@@ -78,7 +79,6 @@ namespace ServicesCentral.Controllers
             var result = _genreService.Delete(id);
             return RedirectToAction(nameof(GenreList));
         }
-
     }
 }
 

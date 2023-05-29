@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Services";
+    string username = User.Identity.Name;
 }
 @model ServicesCentral.Models.MarketListVm
 
@@ -61,20 +62,40 @@
 <section class="markets">
     @foreach (var market in Model.MarketList)
     {
-        <div class="market-card" onclick="window.location.href='/Home/Reserve?marketId=@market.Id'">
-            <div class="market-image">
-                <img src="/Uploads/@market.ShopImage" />
+        @if (User.IsInRole("user"))
+            {
+            <div class="market-card" onclick="window.location.href='/Home/Reserve?marketId=@market.Id'">
+                <div class="market-image">
+                    <img src="/Uploads/@market.ShopImage" />
+                </div>
+                <div class="market-info">
+                    <hr class="text-white" />
+                    <h4 class="text-center">@market.ShopName</h4>
+                    <hr class="text-white" />
+                    <h4>Services : @market.ServiceName</h4>
+                    <h4>Price : @market.Price</h4>
+                    <h4>Description : @market.Description</h4>
+                </div>
+                <i class="fa fa-cart-plus my-2" style="font-size: 20px; color: white ;text-align: right;" aria-hidden="true"></i>
             </div>
-            <div class="market-info">
-                <hr class="text-white" />
-                <h4 class="text-center">@market.ShopName</h4>
-                <hr class="text-white" />
-                <h4>Services : @market.ServiceName</h4>
-                <h4>Price : @market.Price</h4>
-                <h4>Description : @market.Description</h4>
+            }
+            else
+            {
+            <div class="market-card">
+                <div class="market-image">
+                    <img src="/Uploads/@market.ShopImage" />
+                </div>
+                <div class="market-info">
+                    <hr class="text-white" />
+                    <h4 class="text-center">@market.ShopName</h4>
+                    <hr class="text-white" />
+                    <h4>Services : @market.ServiceName</h4>
+                    <h4>Price : @market.Price</h4>
+                    <h4>Description : @market.Description</h4>
+                </div>
+                <i class="fa fa-cart-plus my-2" style="font-size: 20px; color: white ;text-align: right;" aria-hidden="true"></i>
             </div>
-            <i class="fa fa-cart-plus my-2" style="font-size: 20px; color: white ;text-align: right;" aria-hidden="true"></i>
-        </div>
+            }
     }
 </section>
 

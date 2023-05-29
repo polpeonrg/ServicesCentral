@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using ServicesCentral.Data;
+using ServicesCentral.Models.Domain;
 using ServicesCentral.Repositories.Abstract;
 using ServicesCentral.Repositories.Implementation;
 
@@ -7,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
 builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<IMarketService, MarketService>();
@@ -16,6 +19,13 @@ builder.Services.AddScoped<IReservationService, ReservationService>();
 builder.Services.AddDbContext<ApplicationDBContext>( //จะบอกฐานข้อมูลต้องสร้างอะไรบ้าง ก็ส่งไฟล์ ApplicationDBContext จาก Data ไป
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaulConnection")) //ConnectionString อยู่ใน appsetings.json
 );
+
+// For Identity
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDBContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/UserAuthentication/Login");
 
 var app = builder.Build();
 
@@ -32,6 +42,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

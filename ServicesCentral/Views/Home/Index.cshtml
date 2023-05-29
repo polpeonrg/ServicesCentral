@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    string username = User.Identity.Name;
 }
 @model ServicesCentral.Models.MarketListVm
 <!--
@@ -8,13 +9,17 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 -->
-<section class="text-center">
+<section class="text-center header-page">
     <h1 class="text-header">SERVICE CENTRAL</h1>
     <h2>SLOGAN TEXT</h2>
-    <div>
-        <button type="button" class="btn btn-info" onclick="javascript:location.href='/Home/Login'">Sign up</button>
-        <button type="button" class="btn btn-secondary" onclick="javascript:location.href='/Home/Login'">Login</button>
-    </div>
+    @if (string.IsNullOrEmpty(username))
+    {
+        <div>
+            <button type="button" class="btn btn-info" onclick="javascript:location.href='/UserAuthentication/Login'">Login</button>
+            <button type="button" class="btn btn-secondary" onclick="javascript:location.href='/UserAuthentication/Login'">Sign up</button>
+        </div>
+    }
+
     <img src="~/img/logo_sc.png" alt="logo" class="logo-header" )>
 </section>
 

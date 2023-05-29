@@ -2,10 +2,11 @@
 using ServicesCentral.Models;
 using Microsoft.EntityFrameworkCore;
 using ServicesCentral.Models.Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ServicesCentral.Data
 {
-	public class ApplicationDBContext :DbContext
+	public class ApplicationDBContext : IdentityDbContext<ApplicationUser>
 	{
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options) //คอนสตั้กเตอร์ ,option จะเชื่อมต่อกับฐานข้อมูลแบบใด ;พารามิเตอร์ชื่อว่า options ; base คือโยนไปทำงานในคลาสแม่
         {

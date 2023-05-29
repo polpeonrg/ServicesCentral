@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Registration";
+}
+@model ServicesCentral.Models.DTO.RegistrationModel
+
+<h3 class="text-center">Registration</h3>
+
+<form asp-controller="UserAuthentication" asp-action="Registration" method="post">
+    <div class="form-group my-2">
+        <label asp-for="Name" class="my-2">Name</label><br />
+        <input type="text" asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group my-2">
+        <label asp-for="Email" class="my-2">Email</label><br />
+        <input type="text" asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group my-2">
+        <label asp-for="Username" class="my-2">Username</label><br />
+        <input type="text" asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-group my-2">
+        <label asp-for="Password" class="my-2">Password</label><br />
+        <input type="password" asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group my-2">
+        <label asp-for="PasswordConfirm" class="my-2">PasswordConfirm</label><br />
+        <input type="password" asp-for="PasswordConfirm" class="form-control" />
+        <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+    </div>
+
+    @if (TempData["msg"] != null)
+    {
+        <div class="alert mb-1">
+            @TempData["msg"]
+        </div>
+    }
+
+    <div class="input-container">
+        <button class="btn btn-primary" type="submit">Registration</button>
+        <a class="btn btn-sec" href="/UserAuthentication/Login">Login</a>
+    </div>
+
+</form>

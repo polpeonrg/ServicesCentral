@@ -94,6 +94,9 @@ h4 {
 .text-header {
     margin-top: 10vh;
 }
+.header-page{
+    height: 33vh;
+}
 
 .logo-header {
     margin-top: 5vh;
@@ -234,6 +237,25 @@ h4 {
         .pagination a:hover:not(.active) {
             background-color: #ddd;
         }
+
+.dropdown-nav-link {
+    position: absolute;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    margin-top: 0.2rem;
+    min-width: 6.5rem;
+    transition: all 0.5s ease;
+    visibility: hidden;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+    .dropdown-nav-link li a {
+        padding: 0.4rem 1rem;
+        display: block;
+    }
 
 
 /* Contact us
